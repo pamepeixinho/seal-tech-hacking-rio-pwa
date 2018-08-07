@@ -1,9 +1,12 @@
 import { post, request } from './request';
 
-const url = process.env.API_URL || 'http://localhost:4000';
+// TODO: use webpack define plugin and set env vars in heroku
+const url = process.env.NODE_ENV === 'production'
+  ? 'https://focaai-api.herokuapp.com'
+  : 'http://localhost:4000';
 
 export const uploadImage = (image) => {
-  const endpoint = `${url}/frame`;
+  const endpoint = `${url}/v2/frame`;
   return post(endpoint, {
     image,
     meta: {
