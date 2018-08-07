@@ -1,7 +1,6 @@
 import { post, request } from './request';
 
-// const url = 'http://fullstarks-api.sa-east-1.elasticbeanstalk.com';
-const url = 'http://localhost:4000';
+const url = process.env.API_URL || 'http://localhost:4000';
 
 export const uploadImage = (image) => {
   const endpoint = `${url}/frame`;
@@ -14,8 +13,8 @@ export const uploadImage = (image) => {
       class: {
         title: 'Aula maneira',
         date: new Date().get,
-      }
-    }
+      },
+    },
   }).then((data) => {
     console.log('=======predictions=======');
     console.log(data);

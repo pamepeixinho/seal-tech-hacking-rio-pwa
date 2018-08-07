@@ -33,6 +33,7 @@ export default function App() {
         }}
       />
       <Switch>
+        <Route exact path="/" component={HomePageTeacher} />
         <Route exact path="/professor" component={HomePageTeacher} />
         <Route exact path="/aluno" component={HomePage} />
         <Route component={NotFoundPage} />
