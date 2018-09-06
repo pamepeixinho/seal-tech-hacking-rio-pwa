@@ -63,6 +63,8 @@ export class Reports extends React.PureComponent { // eslint-disable-line react/
       objs = objs.slice(0, 16);
     }
 
+    const rankingMessage = "Student's commitment ranking;";
+
     return (
       <Wrapper>
         <Header>
@@ -78,7 +80,7 @@ export class Reports extends React.PureComponent { // eslint-disable-line react/
           </Grid>
           <Grid item xs={4}>
             <Paper style={{ padding: '16px', height: '472px' }}>
-              <h4 style={{ padding: '0', margin: 0 }} >Ranking de alunos por engajamento</h4>
+              <h4 style={{ padding: '0', margin: 0 }} >{rankingMessage}</h4>
               <br />
               { objs && objs.map((student, index) => (
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>

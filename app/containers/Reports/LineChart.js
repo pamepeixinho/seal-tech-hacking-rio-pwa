@@ -5,13 +5,12 @@ const chartData = (temporalCommitmentModules) => {
   let labels = [];
   let data = [];
 
-  debugger;
   if (!temporalCommitmentModules) {
     return ({
       labels,
       datasets: [
         {
-          label: 'Índice de engajamento da turma nesse curso',
+          label: "Classe's commitment rate in the course",
           fillColor: 'rgba(210,67,127, 0.5)',
           strokeColor: 'rgba(210,67,127,1)',
           pointColor: 'rgba(210,67,127,1)',
@@ -36,7 +35,7 @@ const chartData = (temporalCommitmentModules) => {
     labels,
     datasets: [
       {
-        label: 'Índice de engajamento da turma nesse curso',
+        label: "Classe's commitment rate in the course",
         fillColor: 'rgba(210,67,127, 0.5)',
         strokeColor: 'rgba(210,67,127,1)',
         pointColor: 'rgba(210,67,127,1)',

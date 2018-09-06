@@ -23,10 +23,18 @@ export class Form extends React.PureComponent {
   }
 
   render() {
+    const bigData = 'Big Data';
+    const dataMining = 'Data mining';
+    const entrepreneurship = 'entrepreneurship';
+    const module1 = 'Module 1';
+    const module2 = 'Module 2';
+    const module3 = 'Module 3';
+    const module4 = 'Module 4';
+
     return (
       <form autoComplete="off">
         <CourseForm>
-          <InputLabel htmlFor="curso-simple">Curso</InputLabel>
+          <InputLabel htmlFor="curso-simple">Course</InputLabel>
           <Select
             value={this.state.curso}
             onChange={this.handleChange}
@@ -35,14 +43,14 @@ export class Form extends React.PureComponent {
               id: 'curso-simple',
             }}
           >
-            <MenuItem value="Big Data">Big Data</MenuItem>
-            <MenuItem value="Data Mining">Data Mining</MenuItem>
-            <MenuItem value="Empreendedorismo">Empreendedorismo</MenuItem>
+            <MenuItem value="BigData">{bigData}</MenuItem>
+            <MenuItem value="DataMining">{dataMining}</MenuItem>
+            <MenuItem value="entrepreneurship">{entrepreneurship}</MenuItem>
             <MenuItem value="iot">iot</MenuItem>
           </Select>
         </CourseForm>
         <CourseForm>
-          <InputLabel htmlFor="modulo">Módulo</InputLabel>
+          <InputLabel htmlFor="modulo">Module</InputLabel>
           <Select
             value={this.state.modulo}
             onChange={this.handleChangeModulo}
@@ -51,10 +59,10 @@ export class Form extends React.PureComponent {
               id: 'modulo',
             }}
           >
-            <MenuItem value="Módulo 1">Módulo 1</MenuItem>
-            <MenuItem value="Módulo 2">Módulo 2</MenuItem>
-            <MenuItem value="Módulo 3">Módulo 3</MenuItem>
-            <MenuItem value="Módulo 4">Módulo 4</MenuItem>
+            <MenuItem value="Modulo1">{module1}</MenuItem>
+            <MenuItem value="Modulo2">{module2}</MenuItem>
+            <MenuItem value="Modulo3">{module3}</MenuItem>
+            <MenuItem value="Modulo4">{module4}</MenuItem>
           </Select>
         </CourseForm>
       </form>
