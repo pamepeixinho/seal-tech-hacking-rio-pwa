@@ -14,6 +14,12 @@ const styles = (theme) => ({
   },
 });
 
+const dataExploringMessage = 'Exploratory data analysis';
+const contingencyMatrixMessage = 'Contingency matrixes';
+const dataInterpretationMessage = 'Data interpretation';
+const dataInterpretationVideoMessage = 'Data interpretation (video classes)';
+const editingMessage = 'Edit module 1';
+
 const Content = (props) => {
   const { classes } = props;
   return (
@@ -22,19 +28,19 @@ const Content = (props) => {
         <b>Módulo 1</b>
         <br />
         <div>
-          <a href="#"><img width="18" hight="18" src={PDFImg} />Análise exploratória de dados</a>
+          <a href="#"><img width="18" hight="18" src={PDFImg} />{dataExploringMessage}</a>
         </div>
         <div>
-          <a href="#"><img width="18" hight="18" src={PDFImg} />Matrizes de contigência</a>
+          <a href="#"><img width="18" hight="18" src={PDFImg} />{contingencyMatrixMessage}</a>
         </div>
         <div>
-          <a href="#"><img width="18" hight="18" src={slideImg} />Interpretação de dados</a>
+          <a href="#"><img width="18" hight="18" src={slideImg} />{dataInterpretationMessage}</a>
         </div>
         <div>
-          <a href="#"><img width="18" hight="18" src={videoImg} />Interpretação de dados(videoaula)</a>
+          <a href="#"><img width="18" hight="18" src={videoImg} />{dataInterpretationVideoMessage}</a>
         </div>
         <div style={{ marginTop: '88px', color: 'grey !important' }}>
-          <a href="#">++ Editar Módulo 1 do Curso </a>
+          <a href="#">++ {editingMessage} </a>
         </div>
       </Paper>
     </div>

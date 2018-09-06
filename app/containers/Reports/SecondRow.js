@@ -12,18 +12,21 @@ import LineChart from './LineChart';
 
 const calculate = (meanCommitment) => Math.round(meanCommitment * 100.0);
 
+const commitmentThroughTheCourse = 'Commitment throught the course';
+const dropoutPrediction = 'Course dropout probability prediction';
+
 const SecondRow = ({ dropoutRate, temporalCommitmentModules }) => (
   <Grid container spacing={24} justify="center">
     <Grid item xs={8}>
       <PaperCard >
-        <h4 style={{ padding: '8px', margin: 0 }}>Engajamento ao longo do curso</h4>
+        <h4 style={{ padding: '8px', margin: 0 }}>{commitmentThroughTheCourse}</h4>
         <LineChart temporalCommitmentModules={temporalCommitmentModules} />
       </PaperCard>
     </Grid>
     <Grid item xs={4}>
       <PaperCard style={{ background: '#1ED0E3', textAlign: 'center' }}>
         <div style={{ height: '114px', fontSize: 64, paddingTop: 34, color: '#731FB0' }}>{ calculate(dropoutRate) }% </div>
-        <h3 style={{ fontSize: 16, textAlign: 'left', padding: 16, color: 'white' }}>Probabilidade de evasão do curso</h3>
+        <h3 style={{ fontSize: 16, textAlign: 'left', padding: 16, color: 'white' }}>{dropoutPrediction}</h3>
       </PaperCard>
     </Grid>
   </Grid>
