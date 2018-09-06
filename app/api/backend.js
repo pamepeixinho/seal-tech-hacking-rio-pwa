@@ -28,6 +28,6 @@ export const uploadImage = (image) => {
 };
 
 export const fetchDashboard = () => {
-  const endpoint = `${url}/dashboard`;
+  const endpoint = `${url}/v2/dashboard`;
   return request(endpoint);
 };
