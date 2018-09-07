@@ -16,7 +16,15 @@ import Paper from '@material-ui/core/Paper';
 
 import injectReducer from 'utils/injectReducer';
 
-import { makeSelectReports, makeSelectMeanCommitmentPerCourse, makeSelectDropoutRate, makeSelectTemporalCommitmentModules, makeSelectCommitmentsPerStudents } from './selectors';
+import {
+  makeSelectReports,
+  selectMeanCommitmentPerCourse,
+  selectDropoutRate,
+  selectCommitmentsPerStudents,
+  makeSelectCommitmentsPerStudents,
+  makeSelectSelectedCourse,
+  makeSelectSelectedModule,
+} from './selectors';
 import reducer from './reducer';
 import { fetchDash } from './actions';
 import FirstRow from './FirstRow';
@@ -47,7 +55,11 @@ export class Reports extends React.PureComponent { // eslint-disable-line react/
     let temporalCommitmentModules;
     if (this.props.reports && this.props.reports.courses && this.props.reports.courses[0].modules
       && this.props.reports.courses[0].modules[0] && this.props.reports.courses[0].modules[0].temoporalCommitment) {
-      temporalCommitmentModules = this.props.reports.courses[0].modules[0].temoporalCommitment;
+      temporalCommitmentModules = this.props.reports.courses[
+        Number(this.props.selectedCourse)
+      ].modules[
+        Number(this.props.selectedModule)
+      ].temoporalCommitment;
       temporalCommitmentModules = temporalCommitmentModules.slice(0, 6);
     }
 
@@ -112,9 +124,11 @@ Reports.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   reports: makeSelectReports(),
-  meanCommitment: makeSelectMeanCommitmentPerCourse(0),
-  dropoutRate: makeSelectDropoutRate(0),
-  commitmentsPerStudends: makeSelectCommitmentsPerStudents(0),
+  meanCommitment: selectMeanCommitmentPerCourse,
+  dropoutRate: selectDropoutRate,
+  commitmentsPerStudends: selectCommitmentsPerStudents,
+  selectedCourse: makeSelectSelectedCourse(),
+  selectedModule: makeSelectSelectedModule(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

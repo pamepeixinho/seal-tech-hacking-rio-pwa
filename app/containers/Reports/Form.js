@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { changeCourse, changeModule } from './actions';
+import { createStructuredSelector } from 'reselect';
+import { makeSelectSelectedCourse, makeSelectSelectedModule } from './selectors';
 
 const CourseForm = styled(FormControl)`
   width: 232px;
@@ -13,13 +17,12 @@ const CourseForm = styled(FormControl)`
 `;
 
 export class Form extends React.PureComponent {
-  state = {
-    curso: 'Big Data',
-    modulo: 'Módulo 1',
+  handleCourse = (ev) => {
+    this.props.dispatch(changeCourse(ev.target.value));
   }
 
-  handleChange = (ev, curso) => {
-    this.setState({ curso });
+  handleModule = (ev) => {
+    this.props.dispatch(changeModule(ev.target.value));
   }
 
   render() {
@@ -36,33 +39,33 @@ export class Form extends React.PureComponent {
         <CourseForm>
           <InputLabel htmlFor="curso-simple">Course</InputLabel>
           <Select
-            value={this.state.curso}
-            onChange={this.handleChange}
+            value={this.props.selectedCourse}
+            onChange={this.handleCourse}
             inputProps={{
               name: 'curso',
               id: 'curso-simple',
             }}
           >
-            <MenuItem value="BigData">{bigData}</MenuItem>
-            <MenuItem value="DataMining">{dataMining}</MenuItem>
-            <MenuItem value="entrepreneurship">{entrepreneurship}</MenuItem>
-            <MenuItem value="iot">iot</MenuItem>
+            <MenuItem value="0">{bigData}</MenuItem>
+            <MenuItem value="1">{dataMining}</MenuItem>
+            <MenuItem value="2">{entrepreneurship}</MenuItem>
+            <MenuItem value="3">iot</MenuItem>
           </Select>
         </CourseForm>
         <CourseForm>
           <InputLabel htmlFor="modulo">Module</InputLabel>
           <Select
-            value={this.state.modulo}
-            onChange={this.handleChangeModulo}
+            value={this.props.selectedModule}
+            onChange={this.handleModule}
             inputProps={{
               name: 'modulo',
               id: 'modulo',
             }}
           >
-            <MenuItem value="Modulo1">{module1}</MenuItem>
-            <MenuItem value="Modulo2">{module2}</MenuItem>
-            <MenuItem value="Modulo3">{module3}</MenuItem>
-            <MenuItem value="Modulo4">{module4}</MenuItem>
+            <MenuItem value="0">{module1}</MenuItem>
+            <MenuItem value="1">{module2}</MenuItem>
+            <MenuItem value="2">{module3}</MenuItem>
+            <MenuItem value="3">{module4}</MenuItem>
           </Select>
         </CourseForm>
       </form>
@@ -70,4 +73,11 @@ export class Form extends React.PureComponent {
   }
 }
 
-export default Form;
+const mapStateToProps = createStructuredSelector({
+  selectedCourse: makeSelectSelectedCourse(),
+  selectedModule: makeSelectSelectedModule(),
+});
+
+const mapDispatchToProps = (dispatch) => ({ dispatch });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

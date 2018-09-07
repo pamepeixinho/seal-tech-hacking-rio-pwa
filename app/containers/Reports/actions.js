@@ -8,6 +8,8 @@ import { fetchDashboard } from '../../api/backend';
 
 import {
   FETCH_DASH,
+  CHANGE_COURSE,
+  CHANGE_MODULE,
 } from './constants';
 
 export function fetchDash() {
@@ -16,3 +18,13 @@ export function fetchDash() {
     promise: fetchDashboard(),
   };
 }
+
+export const changeCourse = (course) => ({
+  type: CHANGE_COURSE,
+  course,
+});
+
+export const changeModule = (module) => ({
+  type: CHANGE_MODULE,
+  module,
+});

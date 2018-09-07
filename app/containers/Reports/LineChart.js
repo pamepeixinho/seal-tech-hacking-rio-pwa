@@ -76,6 +76,7 @@ class LineChartExample extends React.Component {
 
   render() {
     const data = chartData(this.props.temporalCommitmentModules);
+    debugger;
     return (
       <div
         style={{ display: 'flex',
