@@ -33,11 +33,11 @@ const FirstRow = ({ meanCommitment }) => (
             <PieChart />
           </div>
           <div style={{ marginLeft: 32 }}>
-            <div style={{ color: '#731FB0', fontSize: 72 }}>12</div>
+            <div style={{ color: '#731FB0', fontSize: 72 }}>{(12 * meanCommitment).toFixed(0) }</div>
             <div style={{ color: '#731FB0', fontSize: 16 }}>{committed}</div>
           </div>
           <div style={{ marginLeft: 32, marginTop: 48 }}>
-            <div style={{ color: '#A4E817', fontSize: 36 }}>36</div>
+            <div style={{ color: '#A4E817', fontSize: 36 }}>{(36 * meanCommitment).toFixed(0) }</div>
             <div style={{ color: '#A4E817', fontSize: 12 }}>{notCommitted}</div>
           </div>
         </div>

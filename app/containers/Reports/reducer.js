@@ -9,9 +9,13 @@ import { handle } from 'redux-pack';
 
 import {
   FETCH_DASH,
+  CHANGE_COURSE,
+  CHANGE_MODULE,
 } from './constants';
 
 const initialState = fromJS({
+  selectedCourse: '0',
+  selectedModule: '0',
   courses: [{
     name: '',
     dropoutRate: 0,
@@ -32,6 +36,17 @@ function reportsReducer(state = initialState, action) {
   switch (type) {
     case FETCH_DASH:
       return handleAction(state, action);
+
+    case CHANGE_COURSE:
+      return state.merge({
+        selectedCourse: action.course,
+      });
+
+    case CHANGE_MODULE:
+      return state.merge({
+        selectedModule: action.module,
+      });
+
     default:
       return state;
   }

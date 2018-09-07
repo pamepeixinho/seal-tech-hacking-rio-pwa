@@ -22,6 +22,22 @@ export const makeSelectMeanCommitmentPerCourse = (idx) => createSelector(
   }
 );
 
+export const selectMeanCommitmentPerCourse = (state) => {
+  const selectedCourse = Number(makeSelectSelectedCourse()(state));
+  const modules = makeSelectModulesByCourse(selectedCourse)(state);
+
+  if (!modules) {
+    return 0;
+  }
+
+  let meanCommitment = 0;
+  modules.forEach((module) => {
+    meanCommitment += module.meanCommitment;
+  });
+
+  return meanCommitment / modules.length;
+};
+
 export const makeSelectCourses = (idx) => createSelector(
   selectCourses, (state) => {
     const value = state.toJS()[idx];
@@ -32,6 +48,12 @@ export const makeSelectCourses = (idx) => createSelector(
 export const makeSelectDropoutRate = (idx) => createSelector(
   makeSelectCourses(idx), (state) => state.dropoutRate
 );
+
+export const selectDropoutRate = (state) => {
+  const selectedCourse = Number(makeSelectSelectedCourse()(state));
+  const course = makeSelectCourses(selectedCourse)(state);
+  return course.dropoutRate;
+};
 
 export const makeSelectModulesByCourse = (idx) => createSelector(
   makeSelectCourses(idx), (state) => state.modules
@@ -46,6 +68,17 @@ export const makeSelectCommitmentsPerStudents = (idx) => createSelector(
     return state[0].commitmentPerStudent;
   }
 );
+
+export const selectCommitmentsPerStudents = (state) => {
+  const selectedCourse = Number(makeSelectSelectedCourse()(state));
+  const modules = makeSelectModulesByCourse(selectedCourse)(state);
+
+  if (modules.length === 0) {
+    return null;
+  }
+
+  return modules[0].commitmentPerStudent;
+};
 
 export const makeSelectTemporalCommitmentModules = (idx) => createSelector(
   makeSelectCourses(idx), (state) => state.temoporalCommitment
@@ -63,4 +96,14 @@ export const makeTemporalCommitmentModules = (idx) => createSelector(
 
 export const makeSelectReports = () => createSelector(
   selectReportsDomain, (state) => state.toJS()
+);
+
+export const makeSelectSelectedCourse = () => createSelector(
+  selectReportsDomain,
+  (state) => state.get('selectedCourse')
+);
+
+export const makeSelectSelectedModule = () => createSelector(
+  selectReportsDomain,
+  (state) => state.get('selectedModule')
 );
